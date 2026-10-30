@@ -1,218 +1,74 @@
-// ==================================
-// DATA PEMINJAM
-// ==================================
 
-let dataPeminjam = [
-    {
-        nama: "Andi Saputra",
-        nik: "7201011205010001",
-        telepon: "081234567890",
-        alamat: "Palu"
-    },
-    {
-        nama: "Budi Santoso",
-        nik: "7201011205010002",
-        telepon: "082345678901",
-        alamat: "Sigi"
+let cicilan = 0;
+let dataValid = false;
+
+// FUNGSI MASUK WEBSITE
+function masukWebsite() {
+
+    document.getElementById("halamanAwal")
+    .style.display = "none";
+
+    document.getElementById("halamanUtama")
+    .style.display = "block";
+
+}
+
+// FUNGSI MENGHITUNG PINJAMAN
+function hitungPinjaman() {
+
+    let nama = document.getElementById("nama").value;
+    let jumlah = Number(document.getElementById("jumlah").value);
+    let waktu = Number(document.getElementById("waktu").value);
+
+    if (nama.trim() === "" || jumlah <= 0) {
+        alert("Silakan isi nama dan jumlah pinjaman!");
+        dataValid = false;
+        cicilan = 0;
+        return;
     }
-];
 
-// ==================================
-// MENAMPILKAN TABEL PEMINJAM
-// ==================================
+    // Bunga simulasi 2% per bulan
+    let bunga = jumlah * 0.02 * waktu;
 
-function tampilkanPeminjam(data = dataPeminjam) {
-    const tabel = document.getElementById("tabelPeminjam");
+    let total = jumlah + bunga;
 
-    if (!tabel) return;
+    cicilan = total / waktu;
+    dataValid = true;
 
-    tabel.innerHTML = "";
+    document.getElementById("hasil").innerHTML =
 
-    data.forEach((peminjam, index) => {
-        const baris = document.createElement("tr");
+        "Nama: " + nama + "<br>" +
+        "Jumlah Pinjaman: Rp " +
+        jumlah.toLocaleString("id-ID") + "<br>" +
 
-        [index + 1, peminjam.nama, peminjam.nik,
-         peminjam.telepon, peminjam.alamat].forEach(nilai => {
-            const kolom = document.createElement("td");
-            kolom.textContent = nilai;
-            baris.appendChild(kolom);
-        });
+        "Jangka Waktu: " + waktu + " Bulan<br>" +
 
-        const aksi = document.createElement("td");
-        const tombol = document.createElement("button");
+        "Total Pembayaran: Rp " +
+        Math.round(total).toLocaleString("id-ID") + "<br>" +
 
-        tombol.textContent = "Hapus";
+        "Cicilan per Bulan: Rp " +
+        Math.round(cicilan).toLocaleString("id-ID");
 
-        tombol.addEventListener("click", () => {
-            const yakin = confirm("Hapus data peminjam ini?");
-
-            if (yakin) {
-                dataPeminjam = dataPeminjam.filter(
-                    item => item.nik !== peminjam.nik
-                );
-
-                tampilkanPeminjam();
-            }
-        });
-
-        aksi.appendChild(tombol);
-        baris.appendChild(aksi);
-        tabel.appendChild(baris);
-    });
 }
 
-// ==================================
-// MENAMBAH DATA PEMINJAM
-// ==================================
+// FUNGSI PENGAJUAN PINJAMAN
+function ajukanPinjaman() {
 
-const formPeminjam = document.getElementById("formPeminjam");
+    let nama = document.getElementById("nama").value;
 
-if (formPeminjam) {
-    tampilkanPeminjam();
+    if (!dataValid || nama.trim() === "") {
 
-    formPeminjam.addEventListener("submit", function(event) {
-        event.preventDefault();
+        alert("Silakan hitung pinjaman terlebih dahulu!");
 
-        const nama = document.getElementById("nama").value.trim();
-        const nik = document.getElementById("nik").value.trim();
-        const telepon = document.getElementById("telepon").value.trim();
-        const alamat = document.getElementById("alamat").value.trim();
+    } else {
 
-        if (!/^\d{16}$/.test(nik)) {
-            alert("NIK harus terdiri dari 16 angka!");
-            return;
-        }
-
-        if (dataPeminjam.some(item => item.nik === nik)) {
-            alert("NIK sudah terdaftar!");
-            return;
-        }
-
-        dataPeminjam.push({
-            nama: nama,
-            nik: nik,
-            telepon: telepon,
-            alamat: alamat
-        });
-
-        tampilkanPeminjam();
-        formPeminjam.reset();
-
-        alert("Data peminjam berhasil ditambahkan!");
-    });
-}
-
-// ==================================
-// PENCARIAN DATA PEMINJAM
-// ==================================
-
-const cariPeminjam = document.getElementById("cariPeminjam");
-
-if (cariPeminjam) {
-    cariPeminjam.addEventListener("input", function() {
-        const kataKunci = this.value.toLowerCase();
-
-        const hasil = dataPeminjam.filter(item =>
-            item.nama.toLowerCase().includes(kataKunci)
+        alert(
+            "Pengajuan simulasi berhasil dibuat!\n" +
+            "Nama: " + nama + "\n" +
+            "Cicilan per bulan: Rp " +
+            Math.round(cicilan).toLocaleString("id-ID")
         );
 
-        tampilkanPeminjam(hasil);
-    });
-}
-
-// ==================================
-// PENGAJUAN PINJAMAN
-// ==================================
-
-let dataPinjaman = [];
-
-const formPengajuan = document.getElementById("formPengajuan");
-
-if (formPengajuan) {
-    formPengajuan.addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        const nama = document.getElementById("namaPengaju").value.trim();
-        const jumlah = Number(document.getElementById("jumlahPinjaman").value);
-        const tenor = Number(document.getElementById("tenor").value);
-        const tujuan = document.getElementById("tujuan").value.trim();
-
-        if (!Number.isFinite(jumlah) || jumlah < 100000) {
-            alert("Jumlah pinjaman minimal Rp100.000!");
-            return;
-        }
-
-        dataPinjaman.push({
-            nama: nama,
-            jumlah: jumlah,
-            tenor: tenor,
-            tujuan: tujuan,
-            status: "Menunggu"
-        });
-
-        formPengajuan.reset();
-
-        alert("Pengajuan berhasil dikirim! Status: Menunggu.");
-    });
-}
-
-// ==================================
-// SIMULASI CICILAN
-// ==================================
-
-function hitungCicilan() {
-    const jumlah = Number(
-        document.getElementById("jumlahPinjaman")?.value
-    );
-
-    const tenor = Number(
-        document.getElementById("tenor")?.value
-    );
-
-    const hasil = document.getElementById("hasilCicilan");
-
-    if (!hasil) return;
-
-    if (jumlah > 0 && tenor > 0) {
-        // Simulasi tanpa bunga
-        const cicilan = jumlah / tenor;
-
-        hasil.textContent =
-            "Estimasi cicilan per bulan: Rp" +
-            Math.ceil(cicilan).toLocaleString("id-ID");
-    } else {
-        hasil.textContent = "";
     }
+
 }
-
-// ==================================
-// MENAMPILKAN DATA PINJAMAN
-// ==================================
-
-function tampilkanPinjaman() {
-    const tabel = document.getElementById("tabelPinjaman");
-
-    if (!tabel) return;
-
-    dataPinjaman.forEach((pinjaman, index) => {
-        const baris = document.createElement("tr");
-
-        const nilai = [
-            index + 4,
-            pinjaman.nama,
-            "Rp" + pinjaman.jumlah.toLocaleString("id-ID"),
-            pinjaman.tenor + " Bulan",
-            pinjaman.status
-        ];
-
-        nilai.forEach(item => {
-            const kolom = document.createElement("td");
-            kolom.textContent = item;
-            baris.appendChild(kolom);
-        });
-
-        tabel.appendChild(baris);
-    });
-}
-
-tampilkanPinjaman();

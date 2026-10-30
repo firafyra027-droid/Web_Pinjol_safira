@@ -1,202 +1,130 @@
-/* RESET DASAR */
+
+/* PENGATURAN DASAR */
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
 body {
-    background-color: #f1f5f9;
-    color: #1e293b;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ffb6d9, #fff1a8);
 }
 
-/* HEADER */
-header {
-    background-color: #102a43;
-    color: white;
-    padding: 25px;
-    text-align: center;
-}
-
-header h1 {
-    font-size: 30px;
-    margin-bottom: 8px;
-}
-
-/* NAVIGASI */
-nav {
-    background-color: #1d4ed8;
+/* HALAMAN SELAMAT DATANG */
+#halamanAwal {
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 15px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 18px;
-    border-radius: 6px;
-    font-weight: bold;
-}
-
-nav a:hover {
-    background-color: #102a43;
-}
-
-/* KONTEN UTAMA */
-main {
-    max-width: 1100px;
-    margin: 30px auto;
     padding: 20px;
 }
 
-main h2 {
-    color: #102a43;
-    margin-bottom: 15px;
+.welcome-box {
+    background: white;
+    width: 450px;
+    padding: 40px 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    border: 3px solid #ffc5df;
 }
 
-main p {
-    line-height: 1.7;
+.welcome-box h1 {
+    color: #e84393;
+    font-size: 30px;
 }
 
-/* DASHBOARD FLEXBOX */
-.dashboard {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin: 25px 0;
+.welcome-box h2 {
+    color: #e6ad18;
 }
 
-.card {
-    background-color: white;
-    padding: 25px;
-    border-radius: 10px;
-    flex: 1;
-    min-width: 200px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-}
-
-.card h3 {
-    color: #1d4ed8;
-    margin-bottom: 12px;
-}
-
-.card p {
-    font-size: 22px;
-    font-weight: bold;
-}
-
-/* SECTION */
-section {
-    background-color: white;
-    padding: 25px;
-    margin-bottom: 25px;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-}
-
-section h3 {
-    margin-bottom: 18px;
-    color: #102a43;
-}
-
-/* FORM */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-label {
-    font-weight: bold;
-    margin-top: 5px;
-}
-
-input, textarea, select {
-    padding: 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    width: 100%;
-    font-size: 14px;
-}
-
-textarea {
-    min-height: 90px;
-    resize: vertical;
+.welcome-box p {
+    color: #754052;
+    margin-bottom: 30px;
 }
 
 /* TOMBOL */
 button {
-    background-color: #1d4ed8;
+    width: 100%;
+    padding: 13px;
+    margin-top: 15px;
+    background: linear-gradient(90deg, #f062a6, #f5c842);
     color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 6px;
-    cursor: pointer;
     font-weight: bold;
-    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 button:hover {
-    background-color: #102a43;
+    background: linear-gradient(90deg, #e84393, #e6ad18);
 }
 
-/* TABEL */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: white;
+/* HALAMAN UTAMA */
+.container {
+    width: 400px;
+    max-width: 90%;
+    margin: 40px auto;
+    text-align: center;
 }
 
-th, td {
-    border: 1px solid #e2e8f0;
-    padding: 12px;
+.container h1 {
+    color: #e84393;
+    font-size: 35px;
+}
+
+.container > p {
+    color: #754052;
+}
+
+/* FORMULIR */
+.form-box {
+    background: #fffafc;
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid #ffd6e7;
+    box-shadow: 0 5px 15px rgba(232,67,147,0.2);
     text-align: left;
 }
 
-th {
-    background-color: #102a43;
-    color: white;
+.form-box h2 {
+    text-align: center;
+    color: #e84393;
+    font-size: 21px;
 }
 
-tr:nth-child(even) {
-    background-color: #f8fafc;
+label {
+    display: block;
+    margin-top: 15px;
+    color: #a83268;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 11px;
+    margin-top: 7px;
+    border: 1px solid #f5a6c8;
+    border-radius: 7px;
+    background: #fff0f6;
+}
+
+/* HASIL CICILAN */
+#hasil {
+    margin-top: 20px;
+    padding: 12px;
+    background: #fff2b8;
+    color: #a83268;
+    border-radius: 8px;
+    font-weight: bold;
+    line-height: 1.8;
 }
 
 /* FOOTER */
 footer {
-    background-color: #102a43;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 30px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-    }
-
-    nav a {
-        width: 100%;
-        text-align: center;
-    }
-
-    .dashboard {
-        flex-direction: column;
-    }
-
-    main {
-        padding: 12px;
-    }
-
-    section {
-        overflow-x: auto;
-    }
+    margin-top: 25px;
+    color: #754052;
+    font-size: 12px;
+    line-height: 1.8;
 }

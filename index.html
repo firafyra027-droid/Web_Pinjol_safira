@@ -1,61 +1,77 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DanaKita - Dashboard</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>PinjamKu - Pinjaman Online</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>DanaKita</h1>
-        <p>Sistem Informasi Pinjaman Online</p>
-    </header>
+    <!-- HALAMAN SELAMAT DATANG -->
+    <div id="halamanAwal">
+        <div class="welcome-box">
+            <h1>🌸 Selamat Datang 🌸</h1>
+            <h2>Di Peminjaman Online</h2>
+            <p>PinjamKu - Solusi Pinjaman Mudah dan Cepat</p>
 
-    <nav>
-        <a href="index.html">Dashboard</a>
-        <a href="peminjam.html">Data Peminjam</a>
-        <a href="pengajuan.html">Pengajuan</a>
-        <a href="pinjaman.html">Data Pinjaman</a>
-    </nav>
+            <button onclick="masukWebsite()">
+                Masuk Sekarang
+            </button>
+        </div>
+    </div>
 
-    <main>
-        <h2>Dashboard</h2>
-        <p>Selamat datang di sistem informasi DanaKita.</p>
+    <!-- HALAMAN UTAMA -->
+    <div id="halamanUtama" style="display: none;">
 
-        <section class="dashboard">
-            <div class="card">
-                <h3>Total Peminjam</h3>
-                <p>25 Orang</p>
+        <div class="container">
+
+            <h1>PinjamKu</h1>
+            <p>Layanan Peminjaman Online</p>
+
+            <div class="form-box">
+
+                <h2>Formulir Pengajuan Pinjaman</h2>
+
+                <label>Nama Lengkap</label>
+                <input type="text" id="nama"
+                placeholder="Masukkan nama lengkap">
+
+                <label>Jumlah Pinjaman (Rp)</label>
+                <input type="number" id="jumlah"
+                placeholder="Masukkan jumlah pinjaman">
+
+                <label>Jangka Waktu</label>
+                <select id="waktu">
+                    <option value="3">3 Bulan</option>
+                    <option value="6">6 Bulan</option>
+                    <option value="12">12 Bulan</option>
+                </select>
+
+                <button onclick="hitungPinjaman()">
+                    Hitung Cicilan
+                </button>
+
+                <div id="hasil"></div>
+
+                <button onclick="ajukanPinjaman()">
+                    Ajukan Pinjaman
+                </button>
+
             </div>
 
-            <div class="card">
-                <h3>Pengajuan Pinjaman</h3>
-                <p>12 Pengajuan</p>
-            </div>
+            <footer>
+                © 2026 PinjamKu
+                <br>
+                Aplikasi Simulasi Peminjaman Online
+            </footer>
 
-            <div class="card">
-                <h3>Pinjaman Disetujui</h3>
-                <p>8 Pengajuan</p>
-            </div>
-        </section>
+        </div>
 
-        <section>
-            <h3>Tentang DanaKita</h3>
-            <p>
-                DanaKita merupakan website simulasi pengelolaan
-                informasi pinjaman online yang digunakan untuk
-                mengelola data peminjam, pengajuan, dan informasi
-                pinjaman.
-            </p>
-        </section>
-    </main>
+    </div>
 
-    <footer>
-        <p>&copy; 2026 DanaKita. Sistem Informasi Pinjaman Online.</p>
-    </footer>
+    <script src="script.js"></script>
 
-    <script src="js/script.js"></script>
 </body>
 </html>
