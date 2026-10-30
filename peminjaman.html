@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Peminjam - DanaKita</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>DanaKita</h1>
+        <p>Sistem Informasi Pinjaman Online</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="peminjam.html">Data Peminjam</a>
+        <a href="pengajuan.html">Pengajuan</a>
+        <a href="pinjaman.html">Data Pinjaman</a>
+    </nav>
+
+    <main>
+        <h2>Data Peminjam</h2>
+
+        <section>
+            <h3>Form Tambah Peminjam</h3>
+
+            <form id="formPeminjam">
+                <label>Nama Lengkap</label>
+                <input type="text" id="nama" required>
+
+                <label>NIK</label>
+                <input type="text" id="nik" maxlength="16" required>
+
+                <label>Nomor Telepon</label>
+                <input type="tel" id="telepon" required>
+
+                <label>Alamat</label>
+                <textarea id="alamat" required></textarea>
+
+                <button type="submit">Tambah Peminjam</button>
+            </form>
+        </section>
+
+        <section>
+            <h3>Daftar Peminjam</h3>
+
+            <input type="text" id="cariPeminjam"
+            placeholder="Cari nama peminjam...">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>NIK</th>
+                        <th>Telepon</th>
+                        <th>Alamat</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabelPeminjam">
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 DanaKita</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengajuan Pinjaman - DanaKita</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>DanaKita</h1>
+        <p>Sistem Informasi Pinjaman Online</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="peminjam.html">Data Peminjam</a>
+        <a href="pengajuan.html">Pengajuan</a>
+        <a href="pinjaman.html">Data Pinjaman</a>
+    </nav>
+
+    <main>
+        <h2>Form Pengajuan Pinjaman</h2>
+
+        <section>
+            <form id="formPengajuan">
+
+                <label>Nama Peminjam</label>
+                <input type="text" id="namaPengaju" required>
+
+                <label>Jumlah Pinjaman (Rp)</label>
+                <input type="number" id="jumlahPinjaman"
+                min="100000" required>
+
+                <label>Tenor (Bulan)</label>
+                <select id="tenor" required>
+                    <option value="">Pilih Tenor</option>
+                    <option value="3">3 Bulan</option>
+                    <option value="6">6 Bulan</option>
+                    <option value="12">12 Bulan</option>
+                    <option value="24">24 Bulan</option>
+                </select>
+
+                <label>Tujuan Pinjaman</label>
+                <textarea id="tujuan" required></textarea>
+
+                <button type="submit">Kirim Pengajuan</button>
+
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 DanaKita</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
